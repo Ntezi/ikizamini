@@ -1,10 +1,18 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+export interface Question {
+    question: string;
+    options: Record<string, string>;
+    answer: string;
+    userAnswer?: string;
+}
 
 export interface QuizState {
-    questions: any[];
+    questions: Question[];
     currentQuestionIndex: number;
     score: number;
     completed: boolean;
+    timeLeft: number;  // Timer state in seconds
 }
 
 const initialState: QuizState = {
@@ -12,6 +20,7 @@ const initialState: QuizState = {
     currentQuestionIndex: 0,
     score: 0,
     completed: false,
+    timeLeft: 1200,  // 20 minutes in seconds
 };
 
 export const quizSlice = createSlice({
@@ -33,9 +42,17 @@ export const quizSlice = createSlice({
             state.currentQuestionIndex = 0;
             state.score = 0;
             state.completed = false;
+            state.timeLeft = 1200;
         },
+        decrementTimer: (state) => {
+            if (state.timeLeft > 0) {
+                state.timeLeft -= 1;
+            } else {
+                state.completed = true;  // End quiz when timer reaches 0
+            }
+        }
     },
 });
 
-export const {setQuestions, answerQuestion, resetQuiz} = quizSlice.actions;
+export const { setQuestions, answerQuestion, resetQuiz, decrementTimer } = quizSlice.actions;
 export default quizSlice.reducer;

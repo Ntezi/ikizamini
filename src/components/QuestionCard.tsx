@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { answerQuestion } from '../features/quiz/quizSlice.ts';
+import { answerQuestion } from '../features/quiz/quizSlice';
 
 interface OptionProps {
     option: string;
@@ -22,9 +22,10 @@ const Option: React.FC<OptionProps> = ({ option, label, onSelect }) => {
 interface QuestionCardProps {
     question: string;
     options: { [key: string]: string };
+    questionNumber: number
 }
 
-const QuestionCard: React.FC<QuestionCardProps> = ({ question, options }) => {
+const QuestionCard: React.FC<QuestionCardProps> = ({ question, options, questionNumber }) => {
     const dispatch = useDispatch();
 
     const handleOptionSelect = (selectedOption: string) => {
@@ -34,7 +35,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, options }) => {
 
     return (
         <div className="bg-gray-100 p-4 rounded-lg shadow space-y-4">
-            <h2 className="text-xl font-bold">{question}</h2>
+            <h2 className="text-xl font-bold">Question {questionNumber}: {question}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {Object.entries(options).map(([key, value]) => (
                     <Option key={key} label={key.toUpperCase()} option={value} onSelect={() => handleOptionSelect(key)} />
