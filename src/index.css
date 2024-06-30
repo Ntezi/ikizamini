@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Inter', sans-serif; /* Assuming you have this font loaded */
+    background: #f3f4f6; /* Lighter background for the whole page */
+    color: #333; /* Default text color */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
