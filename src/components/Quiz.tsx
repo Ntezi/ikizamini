@@ -53,6 +53,7 @@ const Quiz = () => {
                     question={currentQuestion.question}
                     options={currentQuestion.options}
                     questionNumber={currentQuestionIndex + 1}
+                    image={currentQuestion.image}
                 />
             )}
         </div>

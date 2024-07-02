@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { answerQuestion } from '../features/quiz/quizSlice';
 
@@ -22,11 +22,20 @@ const Option: React.FC<OptionProps> = ({ option, label, onSelect }) => {
 interface QuestionCardProps {
     question: string;
     options: { [key: string]: string };
-    questionNumber: number
+    questionNumber: number;
+    image?: string;
 }
 
-const QuestionCard: React.FC<QuestionCardProps> = ({ question, options, questionNumber }) => {
+const QuestionCard: React.FC<QuestionCardProps> = ({ question, options, questionNumber, image }) => {
     const dispatch = useDispatch();
+
+    const [imageSrc, setImageSrc] = useState<string>();
+
+    useEffect(() => {
+        if (image) {
+            setImageSrc(`/images/${image}`);
+        }
+    }, [image]);
 
     const handleOptionSelect = (selectedOption: string) => {
         // Check if the selected option is correct
@@ -36,6 +45,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, options, question
     return (
         <div className="bg-gray-100 p-4 rounded-lg shadow space-y-4">
             <h2 className="text-xl font-bold">Question {questionNumber}: {question}</h2>
+            {image && <img src={imageSrc} alt={`Question ${questionNumber}`} className="my-4 max-w-full h-auto"/>}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {Object.entries(options).map(([key, value]) => (
                     <Option key={key} label={key.toUpperCase()} option={value} onSelect={() => handleOptionSelect(key)} />
