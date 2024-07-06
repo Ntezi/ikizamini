@@ -6,9 +6,6 @@ Welcome to the Ikizamini application, a comprehensive tool to help you practice 
 
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
 - [Generating Questions](#generating-questions)
 
 ## Features
@@ -27,22 +24,6 @@ Welcome to the Ikizamini application, a comprehensive tool to help you practice 
 - **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
 - **React Router**: Declarative routing for React applications.
 - **Redux Toolkit**: The official, recommended way to write Redux logic.
-
-## Contributing
-
-Contributions are welcome! Please follow these steps to contribute:
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes.
-4. Commit your changes (`git commit -m 'Add new feature'`).
-5. Push to the branch (`git push origin feature-branch`).
-6. Open a Pull Request.
-
-
-## Acknowledgements
-
-- Developed by [Marius Ngaboyamahina](https://www.linkedin.com/in/ntezi/).
 
 ## Generating Questions
 
