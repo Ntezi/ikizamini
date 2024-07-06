@@ -1,5 +1,5 @@
 import * as CryptoJS from "crypto-js";
-import { RootState } from "../store";
+import { RootState } from "../app/store";
 
 export class StorageManager {
   private static readonly SECRET_KEY = "astytuidshxgtyuijdshyt7yuijdsh";
