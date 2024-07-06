@@ -44,7 +44,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, options, question
 
     return (
         <div className="bg-gray-100 p-4 rounded-lg shadow space-y-4">
-            <h2 className="text-xl font-bold">Question {questionNumber}: {question}</h2>
+            <h2 className="text-xl font-bold">{questionNumber}: {question}</h2>
             {image && <img src={imageSrc} alt={`Question ${questionNumber}`} className="my-4 max-w-full h-auto"/>}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {Object.entries(options).map(([key, value]) => (

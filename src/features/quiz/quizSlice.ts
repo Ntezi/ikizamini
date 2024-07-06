@@ -4,6 +4,7 @@ export interface Question {
     question: string;
     options: Record<string, string>;
     answer: string;
+    image: string;
     userAnswer?: string;
 }
 
@@ -12,7 +13,7 @@ export interface QuizState {
     currentQuestionIndex: number;
     score: number;
     completed: boolean;
-    timeLeft: number;  // Timer state in seconds
+    timeLeft: number;
 }
 
 const initialState: QuizState = {
@@ -20,7 +21,7 @@ const initialState: QuizState = {
     currentQuestionIndex: 0,
     score: 0,
     completed: false,
-    timeLeft: 1200,  // 20 minutes in seconds
+    timeLeft: 1200,
 };
 
 export const quizSlice = createSlice({
@@ -33,6 +34,7 @@ export const quizSlice = createSlice({
         answerQuestion: (state, action: PayloadAction<string>) => {
             const isCorrect = state.questions[state.currentQuestionIndex].answer === action.payload;
             if (isCorrect) state.score += 1;
+            state.questions[state.currentQuestionIndex].userAnswer = action.payload;
             state.currentQuestionIndex += 1;
             if (state.currentQuestionIndex >= state.questions.length) {
                 state.completed = true;
@@ -48,7 +50,7 @@ export const quizSlice = createSlice({
             if (state.timeLeft > 0) {
                 state.timeLeft -= 1;
             } else {
-                state.completed = true;  // End quiz when timer reaches 0
+                state.completed = true;
             }
         }
     },
