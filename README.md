@@ -1,6 +1,6 @@
 # Ikizamini
 
-Welcome to the Ikizamini application, a comprehensive tool to help you practice and prepare for the theory exam for your driving test.
+Welcome to the [Ikizamini application](https://ikizamini-a54cb.web.app/), a comprehensive tool to help you practice and prepare for the theory exam for your driving test.
 
 ## Table of Contents
 
